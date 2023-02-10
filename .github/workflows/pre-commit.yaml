@@ -75,6 +75,7 @@ jobs:
         run: |
           source test_env.sh
           for i in  $(ls -d */); do
+            echo $i
             cd $i
             terraform init
             terraform plan -out tfplan
