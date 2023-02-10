@@ -76,6 +76,7 @@ jobs:
           for i in  $(ls -d */); do
             cd $i
             terraform init
+            cd ..
           done
 
       - name: Terraform Plan and validate
@@ -86,4 +87,5 @@ jobs:
             terraform plan -out tfplan
             terraform show -json tfplan | jq '.' > tfplan.json
             docker run --volume "${{ github.workspace }}:/tf" -w /tf bridgecrew/checkov -f tfplan.json --soft-fail
+            cd ..
           done
