@@ -67,13 +67,7 @@ jobs:
         run: terraform fmt
 
       - name: Terraform Init
-        run: |
-          for i in  $(ls -d */); do
-            echo $i
-            cd $i
-            terraform init
-            cd ..
-          done
+        id: init
 
       - name: Terraform Plan and validate
         run: |
