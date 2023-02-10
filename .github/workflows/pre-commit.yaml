@@ -72,6 +72,7 @@ jobs:
             echo $i
             cd $i
             terraform init
+            cd ..
           done
 
       - name: Terraform Init, Plan and validate
