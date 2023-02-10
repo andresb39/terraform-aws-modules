@@ -74,6 +74,7 @@ jobs:
       - name: Terraform Init
         run: |
           for i in  $(ls -d */); do
+            cd $i
             terraform init
           done
 
