@@ -71,19 +71,12 @@ jobs:
       - name: Terraform Format
         run: terraform fmt
 
-      - name: Terraform Init
-        run: |
-          for i in  $(ls -d */); do
-            cd $i
-            terraform init
-            cd ..
-          done
-
-      - name: Terraform Plan and validate
+      - name: Terraform Init, Plan and validate
         run: |
           source test_env.sh
           for i in  $(ls -d */); do
             cd $i
+            terraform init
             terraform plan -out tfplan
             terraform show -json tfplan | jq '.' > tfplan.json
             docker run --volume "${{ github.workspace }}:/tf" -w /tf bridgecrew/checkov -f tfplan.json --soft-fail
