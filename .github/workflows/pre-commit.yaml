@@ -84,5 +84,6 @@ jobs:
           for i in  $(ls -d */); do
             cd $i
             terraform plan -out tfplan
+            terraform show -json tfplan | jq '.' > tfplan.json
             cd ..
           done
