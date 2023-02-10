@@ -77,6 +77,8 @@ jobs:
           for i in  $(ls -d */); do
             echo $i
             cd $i
+            ls
+            env
             terraform init
             terraform plan -out tfplan
             terraform show -json tfplan | jq '.' > tfplan.json
