@@ -75,7 +75,7 @@ jobs:
             cd ..
           done
 
-      - name: Terraform Init, Plan and validate
+      - name: Terraform Plan and validate
         run: |
           source test_env.sh
           for i in  $(ls -d */); do
