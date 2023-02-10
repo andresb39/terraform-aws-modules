@@ -78,7 +78,7 @@ jobs:
             echo $i
             cd $i
             ls
-            env
+            env | grep AWS
             terraform init
             terraform plan -out tfplan
             terraform show -json tfplan | jq '.' > tfplan.json
