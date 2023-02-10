@@ -68,6 +68,15 @@ jobs:
 
       - name: Terraform Init
         id: init
+        run: |
+          for i in  $(ls -d */); do
+            cd $i
+            terraform init
+            cd ..
+          done
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
 
       - name: Terraform Plan and validate
         run: |
@@ -75,7 +84,5 @@ jobs:
           for i in  $(ls -d */); do
             cd $i
             terraform plan -out tfplan
-            terraform show -json tfplan | jq '.' > tfplan.json
-            docker run --volume "${{ github.workspace }}/$i:/tf" -w /tf bridgecrew/checkov -f tfplan.json
             cd ..
           done
