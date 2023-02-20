@@ -1,4 +1,4 @@
-variable "google_group_name" {
+variable "group_name" {
   description = "Google Workspace Group Name"
   type        = string
 }

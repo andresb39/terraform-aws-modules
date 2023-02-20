@@ -14,8 +14,9 @@ resource "aws_identitystore_user" "this" {
   }
 }
 
-resource "aws_identitystore_group_membership" "example" {
+resource "aws_identitystore_group_membership" "this" {
+  for_each          = length(var.group_id) > 0 ? toset(var.group_id) : []
   identity_store_id = tolist(data.aws_ssoadmin_instances.sso.identity_store_ids)[0]
-  group_id          = var.group_id
+  group_id          = each.value
   member_id         = aws_identitystore_user.this.user_id
 }
