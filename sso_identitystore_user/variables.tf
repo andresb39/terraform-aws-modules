@@ -25,5 +25,5 @@ variable "emails" {
 
 variable "group_id" {
   description = "(Required) The identifier for a group in the Identity Store."
-  type        = string
+  type        = list(string)
 }

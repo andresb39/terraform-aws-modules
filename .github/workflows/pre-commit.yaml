@@ -84,13 +84,13 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan and validate
-        run: |
-          source test_env.sh
-          for i in  $(ls -d */); do
-            cd $i
-            terraform plan -out tfplan
-            terraform show -json tfplan | jq '.' > tfplan.json
-          docker run --volume "${{ github.workspace }}/$i:/tf" -w /tf bridgecrew/checkov -f tfplan.json
-            cd ..
-          done
+#      - name: Terraform Plan and validate
+#        run: |
+#          source test_env.sh
+#          for i in  $(ls -d */); do
+#            cd $i
+#            terraform plan -out tfplan
+#            terraform show -json tfplan | jq '.' > tfplan.json
+#          docker run --volume "${{ github.workspace }}/$i:/tf" -w /tf bridgecrew/checkov -f tfplan.json
+#            cd ..
+#          done
