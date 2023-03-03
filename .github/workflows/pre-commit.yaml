@@ -37,7 +37,6 @@ jobs:
           extra_args: --all-files
   checkov:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         with:
