@@ -1,5 +1,5 @@
 variable "group_name" {
-  description = "Google Workspace Group Name"
+  description = "Group Name"
   type        = string
 }
 

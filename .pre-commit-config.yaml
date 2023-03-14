@@ -1,6 +1,6 @@
   repos:
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.41.0
+    rev: v2.42.1
     hooks:
       - id: commitizen
         stages:
@@ -41,7 +41,7 @@
 
   #With bridgecrew
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.3.3' # change to tag or sha
+    rev: '2.3.57' # change to tag or sha
     hooks:
       - id: checkov
         verbose: true
